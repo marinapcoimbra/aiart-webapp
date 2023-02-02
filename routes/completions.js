@@ -1,19 +1,26 @@
 var express = require("express");
 var router = express.Router();
+const ai = require('openai')
 
-/* GET home page. */
-router.get("/", function (req, res, next) {
-  res.render("index", { title: "Express" });
+const apiKey = "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";
+const configuration = new ai.Configuration({
+  apiKey,
 });
+const openai = new ai.OpenAIApi(configuration);
 
-import { Configuration, OpenAIApi } from "openai";
-const apiKey = "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";
-const configuration = new Configuration({
-  apiKey: `process.env.${apiKey}`,
-});
-const openai = new OpenAIApi(configuration);
+function generatePrompt(animal) {
+  const capitalizedAnimal =
+    animal[0].toUpperCase() + animal.slice(1).toLowerCase();
+  return `Suggest three names for an animal that is a superhero.
+Animal: Cat
+Names: Captain Sharpclaw, Agent Fluffball, The Incredible Feline
+Animal: Dog
+Names: Ruff the Protector, Wonder Canine, Sir Barks-a-Lot
+Animal: ${capitalizedAnimal}
+Names:`;
+}
 
-export default async function (req, res) {
+router.post("/", async function (req, res, next) {
   if (!configuration.apiKey) {
     res.status(500).json({
       error: {
@@ -24,7 +31,7 @@ export default async function (req, res) {
     return;
   }
 
-  const animal = req.body.animal || "";
+  const animal = 'Horse';
   if (animal.trim().length === 0) {
     res.status(400).json({
       error: {
@@ -55,18 +62,6 @@ export default async function (req, res) {
       });
     }
   }
-}
+});
 
-function generatePrompt(animal) {
-  const capitalizedAnimal =
-    animal[0].toUpperCase() + animal.slice(1).toLowerCase();
-  return `Suggest three names for an animal that is a superhero.
-
-Animal: Cat
-Names: Captain Sharpclaw, Agent Fluffball, The Incredible Feline
-Animal: Dog
-Names: Ruff the Protector, Wonder Canine, Sir Barks-a-Lot
-Animal: ${capitalizedAnimal}
-Names:`;
-}
 module.exports = router;

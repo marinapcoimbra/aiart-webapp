@@ -23,7 +23,7 @@ con.connect(function (err) {
   //let sql ="DROP TABLE if exists students; CREATE TABLE students(id INT NOT NULL AUTO_INCREMENT, firstname VARCHAR(40) not null, lastname VARCHAR(40) not null, PRIMARY KEY (id));";
   con.query(sql, function (err, result) {
     if (err) throw err;
-    console.log("Table creation `users` was successful!");
+    console.log("Table creation was successful!");
 
     console.log("Closing...");
   });

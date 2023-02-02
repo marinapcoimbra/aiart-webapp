@@ -2,31 +2,20 @@ var express = require("express");
 var router = express.Router();
 const db = require("../model/helper");
 
-/* GET users listing. */
-/*
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
-*/
-/*
-router.get("/", (req, res) => {
-  res.send("Welcome to the API");
-});
-*/
 router.get("/", function (req, res, next) {
-  db("SELECT * FROM users;")
+  db("SELECT * FROM jokes;")
     .then((results) => {
       res.send(results.data);
     })
     .catch((err) => res.status(500).send(err));
 });
 
+
 router.post("/", async function (req, res, next) {
-  const email = req.body.email;
-  const password = req.body.password;
+  const text = req.body.text;
   try {
     await db(
-      `INSERT INTO users (email, password) values ('${email}', '${password}')`
+      `INSERT INTO jokes (text) values ('${text}')`
     );
     res.send(201);
   } catch (error) {
@@ -34,6 +23,7 @@ router.post("/", async function (req, res, next) {
   }
 });
 
+/*
 router.delete("/:id", async function (req, res, next) {
   const id = Number(req.params.id);
   try {
@@ -49,5 +39,6 @@ router.delete("/:id", async function (req, res, next) {
     res.status(500).send(error);
   }
 });
+*/
 
 module.exports = router;
