@@ -51,10 +51,6 @@ function App() {
       <UserPage />
       <Registration />
       <main className="styles-main">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/620/620851.png"
-          className="styles-icon"
-        />
         <h3>Name my pet</h3>
         <form onSubmit={onSubmit}>
           <input
@@ -67,6 +63,7 @@ function App() {
           <input type="submit" value="Generate names" />
         </form>
         <div className="styles-result">{result}</div>
+        {error && <h4>Sorry an error occurred</h4>}
       </main>
     </div>
   );
