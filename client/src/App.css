@@ -4,4 +4,9 @@ body {
   background: #2f4454;
   font-family: Kanit;
   color: white;
+  line-height: 1.4;
+  letter-spacing: 0;
+  font-size: 1em;
+  font-weight: normal;
+  word-wrap: break-word;
 }

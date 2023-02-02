@@ -3,8 +3,7 @@ import "../header.css";
 function Header() {
   return (
     <section className="header-container">
-      <title>OpenAI Quickstart</title>
-      <link rel="icon" href="/dog.png" />
+      <title>Pet Name Generator</title>
 
       <h3>Home</h3>
       <h3>About us</h3>

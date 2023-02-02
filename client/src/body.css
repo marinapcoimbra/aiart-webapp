@@ -1,0 +1,19 @@
+p {
+  font-family: Kanit;
+  color: #333;
+  text-align: center;
+  padding: 60px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  line-height: 1.4;
+  letter-spacing: 0;
+  font-size: 20px;
+  font-weight: normal;
+  word-wrap: break-word;
+}
+h1 {
+  font-family: Kanit;
+  font-weight: bold;
+  font-size: 40px;
+  text-align: center;
+}
